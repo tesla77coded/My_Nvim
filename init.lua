@@ -1,7 +1,6 @@
 -- ====================================================================
 -- Neovim: minimal, sane defaults (no plugins here)
 -- ====================================================================
-
 -- Leader keys (set BEFORE loading plugins)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -30,6 +29,34 @@ vim.opt.statusline = table.concat({
 	" %F ", -- full path (move to right side)
 })
 
+-- Show buffers in tabline at the top
+vim.opt.showtabline = 2 -- Always show tabline (2 = always, 1 = only if multiple tabs, 0 = never)
+vim.opt.tabline = "%!v:lua.MyTabline()"
+
+function _G.MyTabline()
+	local s = ""
+	for i = 1, vim.fn.bufnr("$") do
+		if vim.fn.buflisted(i) == 1 then
+			local bufname = vim.fn.bufname(i)
+			local filename = bufname ~= "" and vim.fn.fnamemodify(bufname, ":t") or "[No Name]"
+
+			-- Highlight current buffer
+			if i == vim.fn.bufnr("%") then
+				s = s .. "%#TabLineSel#"
+			else
+				s = s .. "%#TabLine#"
+			end
+
+			-- Add buffer number and name
+			s = s .. " " .. filename .. " "
+		end
+	end
+
+	-- Fill the rest with blank
+	s = s .. "%#TabLineFill#"
+	return s
+end
+
 -- Indentation
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
@@ -52,7 +79,7 @@ vim.opt.termguicolors = true
 -- Small QoL: highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
-		vim.highlight.on_yank()
+		vim.hl.on_yank()
 	end,
 	desc = "Briefly highlight yanked text",
 })

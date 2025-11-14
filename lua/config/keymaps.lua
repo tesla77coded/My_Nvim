@@ -11,8 +11,8 @@ end
 -- Esc alternative
 map("i", "jk", "<Esc>", opts("Exit Insert"))
 
--- Window focus cycle (jumps between splits/explorer/editor)
-map("n", "<leader>w", "<C-w>w", opts("Next Window"))
+-- Save file
+map("n", "<leader>w", "<cmd>w<cr>", opts("Save File"))
 
 -- Buffers
 map("n", "<S-h>", "<cmd>bprevious<cr>", opts("Prev Buffer"))
@@ -69,6 +69,5 @@ if ok_wk then
 		{ "<leader>f", group = "Find" },
 		{ "<leader>g", group = "Git" },
 		{ "<leader>b", group = "Buffers" },
-		{ "<leader>w", group = "Windows" },
 	})
 end

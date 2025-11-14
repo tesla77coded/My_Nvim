@@ -9,8 +9,8 @@ return {
 		priority = 1000,
 		-- you can set set configuration options here
 		config = function()
-			--     vim.g.zenbones_darken_comments = 45
-			-- vim.cmd.colorscheme("rosebones")
+			vim.g.zenbones_darken_comments = 45
+			vim.cmd.colorscheme("rosebones")
 			vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
 			vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
 			vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
