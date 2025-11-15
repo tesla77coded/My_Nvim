@@ -23,7 +23,10 @@ return {
 			notifier = { enabled = true },
 			indent = { enabled = true },
 			statuscolumn = { enabled = false },
-			words = { enabled = true },
+			words = {
+				enabled = false,
+				modes = "n",
+			},
 			lsp = { enabled = true },
 			rename = { enabled = true },
 			quickfix = { enabled = true },
