@@ -11,10 +11,10 @@ return {
 		config = function()
 			vim.g.zenbones_darken_comments = 45
 			vim.cmd.colorscheme("rosebones")
-			vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
-			vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
-			vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
-			vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE" })
+			-- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+			-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+			-- vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+			-- vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE" })
 		end,
 	},
 }
