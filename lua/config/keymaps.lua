@@ -12,7 +12,7 @@ end
 map("i", "jk", "<Esc>", opts("Exit Insert"))
 
 -- Save file
-map("n", "<leader>w", "<cmd>w<cr>", opts("Save File"))
+map("n", "<leader>s", "<cmd>w<cr>", opts("Save File"))
 
 -- Buffers
 map("n", "<S-h>", "<cmd>bprevious<cr>", opts("Prev Buffer"))
@@ -24,6 +24,9 @@ map("n", "<esc>", "<cmd>nohlsearch<cr>", opts("Clear Search"))
 
 -- Lazy manager
 map("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open Lazy plugin manager" })
+
+-- Window focus cycle
+map("n", "<leader>w", "<C-w>w", opts("Next Window"))
 ----------------------------------------------------------------
 -- LSP
 ----------------------------------------------------------------
