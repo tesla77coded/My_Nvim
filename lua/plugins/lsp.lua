@@ -1,5 +1,5 @@
 return {
-	-- Mason
+	-- Mason - Package manager for LSP servers, formatters, linters
 	{
 		"mason-org/mason.nvim",
 		config = function()
@@ -15,7 +15,8 @@ return {
 			})
 		end,
 	},
-	-- Mason-LSPConfig (auto-installs servers)
+
+	-- Mason-LSPConfig - Auto-installs LSP servers
 	{
 		"mason-org/mason-lspconfig.nvim",
 		dependencies = { "mason-org/mason.nvim" },
@@ -25,10 +26,35 @@ return {
 					"lua_ls",
 					"vtsls",
 					"eslint",
+					"pyright",
+					"ruff",
 				},
 			})
 		end,
 	},
+
+	-- Mason-Tool-Installer - Auto-installs formatters and linters
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = { "mason-org/mason.nvim" },
+		config = function()
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					-- Formatters
+					"stylua", -- Lua
+					"black", -- Python
+					"prettierd", -- JS/TS/JSON/HTML/CSS/MD (faster than prettier)
+
+					-- Linters (optional - LSP servers often provide this)
+					-- "eslint_d",  -- JS/TS (if you want faster linting than eslint LSP)
+					-- "ruff",      -- Python (already using ruff LSP)
+				},
+				auto_update = false,
+				run_on_start = true,
+			})
+		end,
+	},
+
 	-- Native Neovim 0.11+ LSP Configuration
 	{
 		"neovim/nvim-lspconfig",
@@ -57,12 +83,10 @@ return {
 					if client and client.server_capabilities.documentHighlightProvider then
 						local group = vim.api.nvim_create_augroup("LSPDocumentHighlight_" .. bufnr, { clear = true })
 
-						-- Highlight when cursor holds in normal mode
 						vim.api.nvim_create_autocmd("CursorHold", {
 							group = group,
 							buffer = bufnr,
 							callback = function()
-								-- Only highlight in normal mode
 								local mode = vim.api.nvim_get_mode().mode
 								if mode == "n" then
 									vim.lsp.buf.document_highlight()
@@ -70,7 +94,6 @@ return {
 							end,
 						})
 
-						-- Clear highlights when cursor moves
 						vim.api.nvim_create_autocmd("CursorMoved", {
 							group = group,
 							buffer = bufnr,
@@ -79,7 +102,6 @@ return {
 							end,
 						})
 
-						-- Clear highlights when entering insert mode
 						vim.api.nvim_create_autocmd("InsertEnter", {
 							group = group,
 							buffer = bufnr,
@@ -88,7 +110,6 @@ return {
 							end,
 						})
 
-						-- Clear highlights when leaving the buffer
 						vim.api.nvim_create_autocmd("BufLeave", {
 							group = group,
 							buffer = bufnr,
@@ -108,7 +129,7 @@ return {
 				end,
 			})
 
-			-- Lua LSP (uses config from nvim-lspconfig/lsp/lua_ls.lua)
+			-- Lua LSP
 			vim.lsp.config("lua_ls", {
 				settings = {
 					Lua = {
@@ -158,8 +179,31 @@ return {
 				},
 			})
 
+			-- Pyright (Python type checking)
+			vim.lsp.config("pyright", {
+				settings = {
+					python = {
+						analysis = {
+							typeCheckingMode = "basic",
+							autoSearchPaths = true,
+							useLibraryCodeForTypes = true,
+							diagnosticMode = "workspace",
+							-- Disable diagnostics that Ruff already handles
+							diagnosticSeverityOverrides = {
+								reportUnusedImport = "none",
+								reportUnusedVariable = "none",
+								reportUndefinedVariable = "none",
+							},
+						},
+					},
+				},
+			})
+
+			-- Ruff (Python linting - ultra-fast)
+			vim.lsp.config("ruff", {})
+
 			-- Enable all configured servers
-			vim.lsp.enable({ "lua_ls", "vtsls", "eslint" })
+			vim.lsp.enable({ "lua_ls", "vtsls", "eslint", "pyright", "ruff" })
 
 			vim.opt.updatetime = 200
 		end,
