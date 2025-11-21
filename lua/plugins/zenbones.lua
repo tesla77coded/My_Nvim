@@ -11,6 +11,8 @@ return {
 		config = function()
 			vim.g.zenbones_darken_comments = 45
 			vim.cmd.colorscheme("rosebones")
+			vim.api.nvim_set_hl(0, "Cursor", { bg = "#d4d8da" })
+			vim.api.nvim_set_hl(0, "CursorInsert", { bg = "#d4a574" })
 			-- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
 			-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
 			-- vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
