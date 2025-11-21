@@ -1,7 +1,3 @@
--- ====================================================================
--- Neovim: minimal, sane defaults (no plugins here)
--- ====================================================================
--- Leader keys (set BEFORE loading plugins)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -17,6 +13,11 @@ vim.opt.laststatus = 3
 vim.opt.ruler = false
 vim.opt.showcmd = false
 vim.opt.cmdheight = 0
+vim.opt.scrolloff = 7
+
+-- cursor
+-- Configure guicursor to use these highlight groups
+vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:block-CursorInsert/lCursorInsert"
 
 -- left side: mode + file info | right side: file path + line/col
 vim.opt.statusline = table.concat({
@@ -70,6 +71,18 @@ vim.opt.incsearch = true
 
 -- Mouse & clipboard
 vim.opt.mouse = "a"
+vim.g.clipboard = {
+	name = "wl-clipboard",
+	copy = {
+		["+"] = "wl-copy",
+		["*"] = "wl-copy",
+	},
+	paste = {
+		["+"] = "wl-paste --no-newline",
+		["*"] = "wl-paste --no-newline",
+	},
+	cache_enabled = 0,
+}
 vim.opt.clipboard = "unnamedplus"
 
 -- Built-in colorscheme (no plugin required)
@@ -144,15 +157,6 @@ vim.api.nvim_create_autocmd("User", {
 	pattern = "VeryLazy",
 	callback = function()
 		require("config.keymaps")
-	end,
-})
-
--- Load Formatter
-vim.api.nvim_create_autocmd("User", {
-	pattern = "VeryLazy",
-	callback = function()
-		require("config.keymaps")
-		require("config.format").setup_autosave()
 	end,
 })
 
