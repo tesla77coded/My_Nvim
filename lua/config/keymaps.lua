@@ -25,8 +25,17 @@ map("n", "<esc>", "<cmd>nohlsearch<cr>", opts("Clear Search"))
 -- Lazy manager
 map("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open Lazy plugin manager" })
 
--- Window focus cycle
-map("n", "<leader>w", "<C-w>w", opts("Next Window"))
+-- Normal mode: move current line
+map("n", "<A-j>", "<cmd>move .+1<cr>==", opts("Move Line Down"))
+map("n", "<A-k>", "<cmd>move .-2<cr>==", opts("Move Line Up"))
+
+-- Insert mode: move current line and stay in insert
+map("i", "<A-j>", "<Esc><cmd>move .+1<cr>==gi", opts("Move Line Down"))
+map("i", "<A-k>", "<Esc><cmd>move .-2<cr>==gi", opts("Move Line Up"))
+
+-- Visual mode: move selected lines
+map("v", "<A-j>", ":move '>+1<cr>gv=gv", opts("Move Lines Down"))
+map("v", "<A-k>", ":move '<-2<cr>gv=gv", opts("Move Lines Up"))
 ----------------------------------------------------------------
 -- LSP
 ----------------------------------------------------------------
