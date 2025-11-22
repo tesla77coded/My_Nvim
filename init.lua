@@ -147,7 +147,9 @@ vim.diagnostic.config({
 
 vim.api.nvim_create_autocmd("CursorHold", {
 	callback = function()
-		vim.diagnostic.open_float(nil, { focus = false })
+		if #vim.diagnostic.get(0) > 0 then -- Only if diagnostics exist
+			vim.diagnostic.open_float(nil, { focus = false })
+		end
 	end,
 })
 
@@ -161,14 +163,14 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 -- Auto `cd` into folder of the file
-vim.api.nvim_create_autocmd("BufEnter", {
-	callback = function()
-		-- Ignore unnamed buffers and terminals
-		if vim.fn.expand("%:p") == "" or vim.bo.buftype ~= "" then
-			return
-		end
-		-- Change directory to the current file’s folder
-		vim.cmd("silent! lcd %:p:h")
-	end,
-	desc = "Auto change directory to the file's folder",
-})
+-- vim.api.nvim_create_autocmd("BufEnter", {
+-- 	callback = function()
+-- 		-- Ignore unnamed buffers and terminals
+-- 		if vim.fn.expand("%:p") == "" or vim.bo.buftype ~= "" then
+-- 			return
+-- 		end
+-- 		-- Change directory to the current file’s folder
+-- 		vim.cmd("silent! lcd %:p:h")
+-- 	end,
+-- 	desc = "Auto change directory to the file's folder",
+-- })
