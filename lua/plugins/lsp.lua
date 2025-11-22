@@ -42,7 +42,6 @@ return {
 				ensure_installed = {
 					-- Formatters
 					"stylua", -- Lua
-					"black", -- Python
 					"prettierd", -- JS/TS/JSON/HTML/CSS/MD (faster than prettier)
 
 					-- Linters (optional - LSP servers often provide this)

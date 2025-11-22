@@ -1,5 +1,4 @@
 -- plugins/conform.lua
--- Modern formatter setup - handles ALL languages automatically
 return {
 	{
 		"stevearc/conform.nvim",
@@ -10,7 +9,7 @@ return {
 				-- Define formatters for each filetype
 				formatters_by_ft = {
 					lua = { "stylua" },
-					python = { "black" },
+					python = { "ruff_format" },
 					javascript = { "prettierd", "prettier", stop_after_first = true },
 					typescript = { "prettierd", "prettier", stop_after_first = true },
 					javascriptreact = { "prettierd", "prettier", stop_after_first = true },
@@ -21,27 +20,25 @@ return {
 					scss = { "prettierd", "prettier", stop_after_first = true },
 					markdown = { "prettierd", "prettier", stop_after_first = true },
 					yaml = { "prettierd", "prettier", stop_after_first = true },
-					-- Add more as needed
 				},
 				-- Format on save
 				format_on_save = {
-					timeout_ms = 500,
-					lsp_fallback = true, -- Use LSP formatter if no formatter is configured
+					timeout_ms = 2000,
+					lsp_fallback = true,
 				},
-				-- Customize formatter behavior
-				formatters = {
-					black = {
-						prepend_args = { "--fast" },
-					},
-				},
+				-- Remove or comment out the black configuration below:
+				-- formatters = {
+				--     black = {
+				--         prepend_args = { "--fast" },
+				--     },
+				-- },
 			})
-
 			-- Manual format keymap
 			vim.keymap.set({ "n", "v" }, "<leader>f", function()
 				require("conform").format({
 					lsp_fallback = true,
 					async = false,
-					timeout_ms = 500,
+					timeout_ms = 2000,
 				})
 			end, { desc = "Format buffer" })
 		end,
