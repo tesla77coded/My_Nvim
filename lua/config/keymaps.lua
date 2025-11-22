@@ -11,6 +11,9 @@ end
 -- Esc alternative
 map("i", "jk", "<Esc>", opts("Exit Insert"))
 
+--  Window focus cycle (jump between splits/explorer/explorer/notifications)
+map("n", "<leader>w", "<C-w>w", opts("Next Window"))
+
 -- Save file
 map("n", "<leader>s", "<cmd>w<cr>", opts("Save File"))
 
@@ -64,10 +67,30 @@ if ok_snacks then
 	map("n", "<leader><space>", function()
 		snacks.picker.files()
 	end, opts("Find Files"))
-	map("n", "<leader>e", function()
-		snacks.explorer()
-	end, opts("Explorer"))
 end
+
+-- Open snacks explorer at current file
+
+vim.keymap.set("n", "<leader>e", function()
+	require("snacks").explorer({ cwd = vim.fn.expand("%:p:h") })
+end, { desc = "Explorer at current file" })
+
+-- Snacks picker keymaps
+vim.keymap.set("n", "<leader>ff", function()
+	require("snacks").picker.files()
+end, { desc = "Find files" })
+vim.keymap.set("n", "<leader>fg", function()
+	require("snacks").picker.grep()
+end, { desc = "Live grep (search in files)" })
+vim.keymap.set("n", "<leader>fb", function()
+	require("snacks").picker.buffers()
+end, { desc = "Find buffers" })
+vim.keymap.set("n", "<leader>fw", function()
+	require("snacks").picker.grep_word()
+end, { desc = "Grep word under cursor" })
+vim.keymap.set("n", "<leader>fr", function()
+	require("snacks").picker.recent()
+end, { desc = "Recent files" })
 
 ----------------------------------------------------------------
 -- which-key groups (if available)
