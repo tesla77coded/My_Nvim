@@ -30,6 +30,12 @@ vim.opt.statusline = table.concat({
 	" %F ", -- full path (move to right side)
 })
 
+-- Persistent undo
+vim.opt.undofile = true
+
+local undodir = vim.fn.stdpath("state") .. "/undo"
+vim.opt.undodir = undodir
+
 -- Show buffers in tabline at the top
 vim.opt.showtabline = 2 -- Always show tabline (2 = always, 1 = only if multiple tabs, 0 = never)
 vim.opt.tabline = "%!v:lua.MyTabline()"
