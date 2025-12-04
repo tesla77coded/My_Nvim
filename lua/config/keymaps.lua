@@ -39,6 +39,9 @@ map("i", "<A-k>", "<Esc><cmd>move .-2<cr>==gi", opts("Move Line Up"))
 -- Visual mode: move selected lines
 map("v", "<A-j>", ":move '>+1<cr>gv=gv", opts("Move Lines Down"))
 map("v", "<A-k>", ":move '<-2<cr>gv=gv", opts("Move Lines Up"))
+
+-- Yank line without new line character
+map("n", "yy", "^y$")
 ----------------------------------------------------------------
 -- LSP
 ----------------------------------------------------------------
