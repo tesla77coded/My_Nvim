@@ -23,7 +23,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"lua_ls",
+					-- "lua_ls",
 					"vtsls",
 					"eslint",
 					"pyright",
@@ -42,11 +42,9 @@ return {
 				ensure_installed = {
 					-- Formatters
 					"stylua", -- Lua
-					"prettierd", -- JS/TS/JSON/HTML/CSS/MD (faster than prettier)
-
-					-- Linters (optional - LSP servers often provide this)
-					-- "eslint_d",  -- JS/TS (if you want faster linting than eslint LSP)
-					-- "ruff",      -- Python (already using ruff LSP)
+					"prettierd",
+					"eslint_d",
+					"ruff",
 				},
 				auto_update = false,
 				run_on_start = true,
