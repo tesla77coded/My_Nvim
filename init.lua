@@ -13,7 +13,7 @@ vim.opt.laststatus = 3
 vim.opt.ruler = false
 vim.opt.showcmd = false
 vim.opt.cmdheight = 0
-vim.opt.scrolloff = 7
+vim.opt.scrolloff = 3
 
 -- cursor
 -- Configure guicursor to use these highlight groups
