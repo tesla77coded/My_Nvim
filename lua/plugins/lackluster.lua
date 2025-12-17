@@ -2,18 +2,25 @@ return {
 	"slugbyte/lackluster.nvim",
 	lazy = false,
 	priority = 1000,
-	init = function()
-		vim.cmd.colorscheme("lackluster-hack")
+	config = function()
+		local lackluster = require("lackluster")
 
-		-- Enable termguicolors (required for cursor colors to work)
-		vim.opt.termguicolors = true
+		-- MUST call setup() BEFORE colorscheme command
+		lackluster.setup({
+			-- You can customize lackluster's own colors here if needed
+			tweak_color = {
+				lack = "default",
+				luster = "default",
+			},
+		})
 
-		-- Define cursor highlight groups
-		vim.api.nvim_set_hl(0, "Cursor", { bg = "#d4d8da" })
-		vim.api.nvim_set_hl(0, "CursorInsert", { bg = "#d4a574" })
+		-- Now set the colorscheme
+		-- vim.cmd.colorscheme("lackluster-hack")
 
-		-- Set guicursor to use different colors for different modes
-		-- n-v-c = normal, visual, command modes use Cursor
-		-- i-ci-ve = insert modes use CursorInsert
+		-- NOW override the highlights AFTER colorscheme is loaded
+		-- vim.api.nvim_set_hl(0, "Cursor", { bg = "#d4a574" })
+		-- vim.api.nvim_set_hl(0, "CursorInsert", { bg = "#789978" })
+		-- vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE", fg = "#555555" })
+		-- vim.api.nvim_set_hl(0, "TabLineSel", { bg = "#444444" })
 	end,
 }

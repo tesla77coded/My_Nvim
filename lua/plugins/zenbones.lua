@@ -9,14 +9,15 @@ return {
 		priority = 1000,
 		-- you can set set configuration options here
 		config = function()
-			vim.g.zenbones_darken_comments = 45
-			-- vim.cmd.colorscheme("rosebones")
-			vim.api.nvim_set_hl(0, "Cursor", { bg = "#d4d8da" })
-			vim.api.nvim_set_hl(0, "CursorInsert", { bg = "#d4a574" })
+			-- vim.g.zenbones_darken_comments = 45
+			-- vim.cmd.colorscheme("zenbones")
+			-- vim.api.nvim_set_hl(0, "Cursor", { bg = "#d4d8da" })
+			-- vim.api.nvim_set_hl(0, "CursorInsert", { bg = "#d4a574" })
 			-- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
 			-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
 			-- vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
 			-- vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE" })
+			-- vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE", fg = "#6e6a86" })
 		end,
 	},
 }
