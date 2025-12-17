@@ -1,40 +1,73 @@
 -- colors/gruber-muted.lua
 -- Gruber-darker inspired colorscheme with muted yellow and green
+--
+
+-- local colors = {
+-- 	-- Base gruber-darker colors
+-- 	bg = "#181818",
+-- 	bg1 = "#282828",
+-- 	bg2 = "#453d41",
+-- 	bg3 = "#484848",
+-- 	bg4 = "#52494e",
+--
+-- 	fg = "#e4e4ef",
+-- 	fg1 = "#f4f4ff",
+-- 	fg2 = "#f5f5f5",
+--
+-- 	-- Muted versions of gruber-darker's bright colors
+-- 	-- Original yellow: #ffdd33 -> Muted to #ccb028
+-- 	yellow_muted = "#ccb028",
+-- 	-- Original green: #73d936 -> Muted to #5fa830"
+-- 	green_muted = "#5fa830",
+--
+-- 	-- Other gruber-darker colors (kept as-is)
+-- 	white = "#ffffff",
+-- 	black = "#000000",
+-- 	brown = "#cc8c3c",
+-- 	quartz = "#95a99f",
+-- 	niagara = "#96a6c8",
+-- 	wisteria = "#9e95c7",
+-- 	red = "#f43841",
+--
+-- 	-- UI colors
+-- 	comment = "#73707e",
+-- 	special_return = "#f4845f",
+-- 	cursor_insert = "#dda15e",
+-- 	cursor_normal = "#ccb794",
+-- }
 
 local colors = {
-	-- Base gruber-darker colors
-	bg = "#181818",
-	bg1 = "#282828",
-	bg2 = "#453d41",
-	bg3 = "#484848",
-	bg4 = "#52494e",
+	-- Pastel base backgrounds (soft darks, not flat gray)
+	bg = "#1f1f22",
+	bg1 = "#2a2a2f",
+	bg2 = "#3a3438",
+	bg3 = "#3f3f45",
+	bg4 = "#4a4146",
 
-	fg = "#e4e4ef",
-	fg1 = "#f4f4ff",
-	fg2 = "#f5f5f5",
+	-- Pastel foregrounds (softer whites)
+	fg = "#d6d6e3",
+	fg1 = "#e6e6f2",
+	fg2 = "#ededed",
 
-	-- Muted versions of gruber-darker's bright colors
-	-- Original yellow: #ffdd33 -> Muted to #ccb028
-	yellow_muted = "#ccb028",
-	-- Original green: #73d936 -> Muted to #5fa830"
-	green_muted = "#5fa830",
+	-- Pastel muted accents
+	yellow_muted = "#d6c66a", -- pastel warm yellow
+	green_muted = "#8fcf9a", -- pastel green
 
-	-- Other gruber-darker colors (kept as-is)
-	white = "#ffffff",
-	black = "#000000",
-	brown = "#cc8c3c",
-	quartz = "#95a99f",
-	niagara = "#96a6c8",
-	wisteria = "#9e95c7",
-	red = "#f43841",
+	-- Other colors softened into pastels
+	white = "#f2f2f2",
+	black = "#141414",
+	brown = "#d2a06f",
+	quartz = "#b3c7bc",
+	niagara = "#b8c6e0",
+	wisteria = "#c1b9e3",
+	red = "#f08a8f",
 
-	-- UI colors
-	comment = "#73707e",
-	special_return = "#f4845f",
-	cursor_insert = "#dda15e",
-	cursor_normal = "#ccb794",
+	-- UI / semantic colors (pastel but readable)
+	comment = "#8b8896",
+	special_return = "#AFC6E9",
+	cursor_insert = "#e6b87d",
+	cursor_normal = "#d8c7a8",
 }
-
 -- Derived shades
 local bg_dark = colors.bg
 local bg_light = colors.bg1
