@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- UI
+vim.opt.background = "dark"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
@@ -76,7 +77,7 @@ vim.opt.smartcase = true
 vim.opt.incsearch = true
 
 -- Mouse & clipboard
-vim.opt.mouse = "a"
+vim.opt.mouse = ""
 vim.g.clipboard = {
 	name = "wl-clipboard",
 	copy = {
@@ -93,7 +94,7 @@ vim.opt.clipboard = "unnamedplus"
 
 -- Built-in colorscheme (no plugin required)
 vim.opt.termguicolors = true
--- pcall(vim.cmd, "colorscheme zenwritten")
+pcall(vim.cmd, "colorscheme custom")
 
 -- Small QoL: highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
