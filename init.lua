@@ -17,8 +17,9 @@ vim.opt.cmdheight = 0
 vim.opt.scrolloff = 3
 
 -- cursor
--- Configure guicursor to use these highlight groups
-vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:block-CursorInsert/lCursorInsert"
+-- vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:block-CursorInsert/lCursorInsert"
+vim.opt.guicursor =
+	"n-v-c:block-Cursor/lCursor,i-ci-ve:block-blinkwait700-blinkoff400-blinkon250-CursorInsert/lCursorInsert"
 
 -- left side: mode + file info | right side: file path + line/col
 vim.opt.statusline = table.concat({
@@ -181,3 +182,22 @@ vim.api.nvim_create_autocmd("User", {
 -- 	end,
 -- 	desc = "Auto change directory to the file's folder",
 -- })
+
+if vim.g.neovide then
+	vim.o.guifont = "CommitMono:h16"
+	vim.o.linespace = 1
+	vim.g.neovide_scroll_animation_length = 0.3
+	vim.g.neovide_scroll_animation_far_lines = 1
+	vim.g.neovide_fullscreen = true
+	vim.g.neovide_cursor_antialiasing = true
+	vim.keymap.set("i", "<C-BS>", "<C-w>", { noremap = true, silent = true })
+
+	vim.g.neovide_cursor_animation_length = 0.150
+	vim.g.neovide_cursor_short_animation_length = 0.04
+	vim.g.neovide_cursor_trail_size = 1.0
+
+	vim.g.neovide_cursor_animate_in_insert_mode = true
+	vim.g.neovide_cursor_animate_command_line = true
+
+	vim.g.neovide_cursor_smooth_blink = true
+end
