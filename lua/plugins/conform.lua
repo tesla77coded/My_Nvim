@@ -26,12 +26,6 @@ return {
 					timeout_ms = 2000,
 					lsp_fallback = true,
 				},
-				-- Remove or comment out the black configuration below:
-				-- formatters = {
-				--     black = {
-				--         prepend_args = { "--fast" },
-				--     },
-				-- },
 			})
 			-- Manual format keymap
 			vim.keymap.set({ "n", "v" }, "<leader>f", function()

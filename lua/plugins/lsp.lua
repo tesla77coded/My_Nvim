@@ -15,7 +15,6 @@ return {
 			})
 		end,
 	},
-
 	-- Mason-LSPConfig - Auto-installs LSP servers
 	{
 		"mason-org/mason-lspconfig.nvim",
@@ -25,14 +24,13 @@ return {
 				ensure_installed = {
 					-- "lua_ls",
 					"vtsls",
-					"eslint",
+					-- REMOVED: "eslint",
 					"pyright",
 					"ruff",
 				},
 			})
 		end,
 	},
-
 	-- Mason-Tool-Installer - Auto-installs formatters and linters
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -43,7 +41,6 @@ return {
 					-- Formatters
 					"stylua", -- Lua
 					"prettierd",
-					"eslint_d",
 					"ruff",
 				},
 				auto_update = false,
@@ -51,7 +48,6 @@ return {
 			})
 		end,
 	},
-
 	-- Native Neovim 0.11+ LSP Configuration
 	{
 		"neovim/nvim-lspconfig",
@@ -62,7 +58,6 @@ return {
 				callback = function(event)
 					local bufnr = event.buf
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
-
 					-- Setup keybindings
 					local opts = { buffer = bufnr, noremap = true, silent = true }
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -75,11 +70,9 @@ return {
 					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 					vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 					vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-
 					-- LSP Document highlight: ONLY in normal mode, ONLY for LSP symbols
 					if client and client.server_capabilities.documentHighlightProvider then
 						local group = vim.api.nvim_create_augroup("LSPDocumentHighlight_" .. bufnr, { clear = true })
-
 						vim.api.nvim_create_autocmd("CursorHold", {
 							group = group,
 							buffer = bufnr,
@@ -90,7 +83,6 @@ return {
 								end
 							end,
 						})
-
 						vim.api.nvim_create_autocmd("CursorMoved", {
 							group = group,
 							buffer = bufnr,
@@ -98,7 +90,6 @@ return {
 								vim.lsp.buf.clear_references()
 							end,
 						})
-
 						vim.api.nvim_create_autocmd("InsertEnter", {
 							group = group,
 							buffer = bufnr,
@@ -106,7 +97,6 @@ return {
 								vim.lsp.buf.clear_references()
 							end,
 						})
-
 						vim.api.nvim_create_autocmd("BufLeave", {
 							group = group,
 							buffer = bufnr,
@@ -115,17 +105,9 @@ return {
 							end,
 						})
 					end
-
-					-- ESLint auto-fix on save (only for eslint client)
-					if client and client.name == "eslint" then
-						vim.api.nvim_create_autocmd("BufWritePre", {
-							buffer = bufnr,
-							command = "EslintFixAll",
-						})
-					end
+					-- REMOVED: ESLint auto-fix on save section
 				end,
 			})
-
 			-- Lua LSP
 			vim.lsp.config("lua_ls", {
 				settings = {
@@ -140,7 +122,6 @@ return {
 					},
 				},
 			})
-
 			-- VTSLS (TypeScript/JavaScript)
 			vim.lsp.config("vtsls", {
 				settings = {
@@ -168,14 +149,7 @@ return {
 					},
 				},
 			})
-
-			-- ESLint with auto-fix on save
-			vim.lsp.config("eslint", {
-				settings = {
-					workingDirectory = { mode = "auto" },
-				},
-			})
-
+			-- REMOVED: ESLint config section
 			-- Pyright (Python type checking)
 			vim.lsp.config("pyright", {
 				settings = {
@@ -195,13 +169,10 @@ return {
 					},
 				},
 			})
-
 			-- Ruff (Python linting - ultra-fast)
 			vim.lsp.config("ruff", {})
-
-			-- Enable all configured servers
-			vim.lsp.enable({ "lua_ls", "vtsls", "eslint", "pyright", "ruff" })
-
+			-- Enable all configured servers (REMOVED: eslint)
+			vim.lsp.enable({ "lua_ls", "vtsls", "pyright", "ruff" })
 			vim.opt.updatetime = 200
 		end,
 	},
