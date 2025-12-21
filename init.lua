@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- UI
-vim.opt.background = "dark"
+vim.opt.background = "light"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
@@ -15,6 +15,7 @@ vim.opt.ruler = false
 vim.opt.showcmd = false
 vim.opt.cmdheight = 0
 vim.opt.scrolloff = 3
+vim.opt.winborder = "rounded"
 
 -- cursor
 -- vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:block-CursorInsert/lCursorInsert"
@@ -182,13 +183,13 @@ vim.api.nvim_create_autocmd("User", {
 -- 	end,
 -- 	desc = "Auto change directory to the file's folder",
 -- })
-
+--
 if vim.g.neovide then
 	vim.o.guifont = "CommitMono:h16"
 	vim.o.linespace = 1
 	vim.g.neovide_scroll_animation_length = 0.3
 	vim.g.neovide_scroll_animation_far_lines = 1
-	vim.g.neovide_fullscreen = true
+	-- vim.g.neovide_fullscreen = true
 	vim.g.neovide_cursor_antialiasing = true
 	vim.keymap.set("i", "<C-BS>", "<C-w>", { noremap = true, silent = true })
 
