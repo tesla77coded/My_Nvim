@@ -24,14 +24,21 @@ vim.opt.guicursor =
 
 -- left side: mode + file info | right side: file path + line/col
 vim.opt.statusline = table.concat({
-	-- " %f", -- filename
 	" %m", -- modified flag [+] if unsaved
 	" %r", -- readonly flag
+	" %{%v:lua.NoiceRecording()%}", -- Recording indicator
 	" %= ", -- <-- everything after this is right-aligned
-	-- "%p%%", -- percent through file
-	-- " [%l,%c]", -- line,col
 	" %F ", -- full path (move to right side)
 })
+
+-- Function to show recording status
+function _G.NoiceRecording()
+	local ok_noice, noice = pcall(require, "noice")
+	if ok_noice and noice.api.statusline.mode.has() then
+		return noice.api.statusline.mode.get()
+	end
+	return ""
+end
 
 -- Persistent undo
 vim.opt.undofile = true
@@ -79,7 +86,7 @@ vim.opt.smartcase = true
 vim.opt.incsearch = true
 
 -- Mouse & clipboard
-vim.opt.mouse = ""
+-- vim.opt.mouse = ""
 vim.g.clipboard = {
 	name = "wl-clipboard",
 	copy = {
