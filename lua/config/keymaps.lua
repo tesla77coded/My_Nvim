@@ -32,6 +32,11 @@ map("v", "<A-j>", ":move '>+1<cr>gv=gv", opts("Move Lines Down"))
 map("v", "<A-k>", ":move '<-2<cr>gv=gv", opts("Move Lines Up"))
 -- Yank line without new line character
 map("n", "yy", "^y$")
+-- Select current line
+map("n", "vv", "V", opts("Select the line under the cursor"))
+-- Increment/Decrement
+map("n", "=", "<C-a>")
+map("n", "-", "<C-x>")
 
 ----------------------------------------------------------------
 -- LSP
