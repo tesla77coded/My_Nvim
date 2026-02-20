@@ -13,11 +13,11 @@ return {
 				luster = "default",
 			},
 		})
-
-		-- Now set the colorscheme
+		--
+		-- -- Now set the colorscheme
 		-- vim.cmd.colorscheme("lackluster-hack")
-
-		-- NOW override the highlights AFTER colorscheme is loaded
+		--
+		-- -- NOW override the highlights AFTER colorscheme is loaded
 		-- vim.api.nvim_set_hl(0, "Cursor", { bg = "#d4a574" })
 		-- vim.api.nvim_set_hl(0, "CursorInsert", { bg = "#789978" })
 		-- vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE", fg = "#555555" })

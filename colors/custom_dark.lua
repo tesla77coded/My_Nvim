@@ -1,37 +1,37 @@
--- colors/clean-light.lua
--- Clean, high-clarity light theme for bright environments
+-- colors/clean-dark.lua
+-- Clean, high-clarity dark theme for low-light environments
 
 local colors = {
-	-- Backgrounds (paper-like, stable)
-	bg = "#faf8f5", -- softer base white
-	bg1 = "#f0ede8", -- subtle first tier
-	bg2 = "#e6e2dd", -- gentle highlight
-	bg3 = "#d8d3cc", -- borders/subtle UI
-	bg4 = "#cac4bb", -- stronger contrast
+	-- Backgrounds (cool dark, calm)
+	bg = "#1c1e26", -- deep blue-gray base
+	bg1 = "#232530", -- subtle first tier
+	bg2 = "#2e303e", -- gentle highlight
+	bg3 = "#3e4057", -- borders/subtle UI
+	bg4 = "#4e5166", -- stronger contrast
 
-	-- Foregrounds (ink-like)
-	fg = "#3a3632", -- warmer black, easier on eyes
-	fg1 = "#242220", -- deepest text
-	fg2 = "#4a4642", -- lighter text
+	-- Foregrounds (warm cream tones)
+	fg = "#d4cfc9", -- soft beige
+	fg1 = "#e8e3dd", -- brighter cream
+	fg2 = "#b8b3ad", -- dimmer gray-beige
 
-	-- Core accents (not muted, not neon)
-	yellow_muted = "#947920", -- richer olive-gold
-	green_muted = "#2a7355", -- forest green with depth
+	-- Core accents (warmer, more saturated for dark)
+	yellow_muted = "#d4a574", -- peachy gold
+	green_muted = "#7eb895", -- soft sage green
 
 	-- Supporting colors
 	white = "#ffffff",
-	black = "#1a1816",
-	brown = "#925c2e", -- warmer rust
-	quartz = "#2b6d7d", -- deeper teal
-	niagara = "#2c5c9a", -- confident blue
-	wisteria = "#6d5aad", -- richer violet
-	red = "#b83838", -- slightly more vibrant
+	black = "#0f1117",
+	brown = "#c98a6a", -- terracotta
+	quartz = "#6ba4b8", -- soft teal-blue
+	niagara = "#7fa7d4", -- periwinkle blue
+	wisteria = "#a68fd1", -- soft lavender
+	red = "#d67676", -- muted coral red
 
 	-- UI / semantic
-	comment = "#3d7a5c", -- balanced green-gray
-	special_return = "#2c5c9a",
-	cursor_insert = "#a8a8a8",
-	cursor_normal = "#7d7571",
+	comment = "#6b8a7a", -- muted green-gray
+	special_return = "#7fa7d4",
+	cursor_insert = "#8b8681",
+	cursor_normal = "#b8b3ad",
 }
 
 -- Derived
@@ -49,8 +49,8 @@ vim.cmd("highlight clear")
 if vim.fn.exists("syntax_on") == 1 then
 	vim.cmd("syntax reset")
 end
-vim.o.background = "light"
-vim.g.colors_name = "clean-light"
+vim.o.background = "dark"
+vim.g.colors_name = "clean-dark"
 
 -- ========================
 -- Editor
@@ -77,9 +77,9 @@ hl("Folded", { fg = colors.bg4, bg = colors.bg3, italic = true })
 -- ========================
 -- Search & selection
 -- ========================
-hl("Search", { fg = colors.white, bg = colors.brown })
-hl("IncSearch", { fg = colors.white, bg = colors.niagara })
-hl("CurSearch", { fg = colors.white, bg = colors.yellow_muted })
+hl("Search", { fg = colors.black, bg = colors.brown })
+hl("IncSearch", { fg = colors.black, bg = colors.niagara })
+hl("CurSearch", { fg = colors.black, bg = colors.yellow_muted })
 hl("Visual", { bg = colors.bg4 })
 hl("VisualNOS", { bg = colors.bg4 })
 
@@ -95,8 +95,8 @@ hl("ModeMsg", { fg = colors.yellow_muted, bold = true })
 -- ========================
 -- Statusline & tabs
 -- ========================
-hl("StatusLine", { bold = false, fg = colors.fg, bg = colors.bg1 })
-hl("StatusLineNC", { bold = false, fg = fg_dim, bg = colors.bg2 })
+hl("StatusLine", { fg = colors.fg, bg = colors.bg1, bold = true })
+hl("StatusLineNC", { fg = fg_dim, bg = colors.bg2 })
 hl("TabLine", { fg = fg_dim, bg = colors.bg })
 hl("TabLineSel", { fg = colors.yellow_muted, bg = colors.bg2, bold = true })
 hl("TabLineFill", { bg = "None" })
@@ -105,7 +105,7 @@ hl("TabLineFill", { bg = "None" })
 -- Popups & menus
 -- ========================
 hl("Pmenu", { fg = colors.fg, bg = colors.bg2 })
-hl("PmenuSel", { fg = colors.white, bg = colors.yellow_muted })
+hl("PmenuSel", { fg = colors.black, bg = colors.yellow_muted })
 hl("PmenuSbar", { bg = colors.bg3 })
 hl("PmenuThumb", { bg = colors.quartz })
 
