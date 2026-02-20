@@ -3,13 +3,15 @@ return {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
+			lsp = {
+				signature = {
+					enabled = false,
+				},
+				hover = {
+					enabled = false,
+				},
+			},
 			routes = {
-				-- Show recording messages in mini view at bottom right
-				-- {
-				-- 	view = "mini",
-				-- 	filter = { event = "msg_showmode" },
-				-- },
-				-- Show write/save confirmations in mini view
 				{
 					view = "mini",
 					filter = {
@@ -18,20 +20,11 @@ return {
 					},
 				},
 			},
-			-- Optional: customize the mini view position
 			views = {
 				mini = {
-					position = {
-						row = -2, -- 2 lines from bottom
-						col = "100%", -- far right
-					},
-					size = {
-						width = "auto",
-						height = "auto",
-					},
-					border = {
-						style = "rounded",
-					},
+					position = { row = -2, col = "100%" },
+					size = { width = "auto", height = "auto" },
+					border = { style = "rounded" },
 				},
 			},
 		},

@@ -15,8 +15,17 @@ return {
 				["<S-Tab>"] = { "select_prev", "fallback" },
 			},
 			appearance = { use_nvim_cmp_as_default = true },
-			completion = { menu = { border = "rounded" }, documentation = { auto_show = true } },
-			signature = { enabled = true },
+			completion = {
+				menu = { border = "rounded" },
+				documentation = {
+					auto_show = false, -- disable the docs box, keep only signature
+					window = { border = "rounded" },
+				},
+			},
+			signature = {
+				enabled = true,
+				window = { border = "rounded" },
+			},
 			snippets = { preset = "luasnip" },
 			sources = { default = { "lsp", "path", "snippets", "buffer" } },
 		},

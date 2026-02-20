@@ -158,7 +158,7 @@ return {
 							typeCheckingMode = "basic",
 							autoSearchPaths = true,
 							useLibraryCodeForTypes = true,
-							diagnosticMode = "workspace",
+							diagnosticMode = "openFilesOnly",
 							-- Disable diagnostics that Ruff already handles
 							diagnosticSeverityOverrides = {
 								reportUnusedImport = "none",
