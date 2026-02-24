@@ -16,6 +16,11 @@ vim.opt.showcmd = false
 vim.opt.cmdheight = 0
 vim.opt.scrolloff = 3
 vim.opt.winborder = "rounded"
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+vim.opt.colorcolumn = "100"
+vim.opt.swapfile = false
+vim.opt.autoread = true
 
 -- cursor
 -- vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:block-CursorInsert/lCursorInsert"
@@ -127,7 +132,7 @@ vim.opt.clipboard = "unnamedplus"
 
 -- Built-in colorscheme (no plugin required)
 vim.opt.termguicolors = true
-pcall(vim.cmd, "colorscheme custom")
+vim.cmd.colorscheme("custom")
 
 -- Small QoL: highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -141,7 +146,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Plugin manager: lazy.nvim (bootstrap per README)
 -- ====================================================================
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
