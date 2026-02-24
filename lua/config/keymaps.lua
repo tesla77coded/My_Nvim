@@ -56,8 +56,12 @@ map("n", "<leader>lr", "<cmd>LspRestart<cr>", opts("Restart LSP"))
 
 -- Diagnostics (now using Trouble)
 map("n", "<leader>cd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", opts("Buffer Diagnostics (Trouble)"))
-map("n", "]d", vim.diagnostic.goto_next, opts("Next Diagnostic"))
-map("n", "[d", vim.diagnostic.goto_prev, opts("Prev Diagnostic"))
+map("n", "[d", function()
+	vim.diagnostic.jump({ count = -1 })
+end)
+map("n", "]d", function()
+	vim.diagnostic.jump({ count = 1 })
+end)
 map("n", "<leader>cl", "<cmd>Trouble diagnostics toggle<cr>", opts("All Diagnostics (Trouble)"))
 
 ----------------------------------------------------------------
@@ -101,19 +105,3 @@ end, { desc = "Grep word under cursor" })
 vim.keymap.set("n", "<leader>fr", function()
 	require("snacks").picker.recent()
 end, { desc = "Recent files" })
-
-----------------------------------------------------------------
--- which-key groups (if available)
-----------------------------------------------------------------
-local ok_wk, wk = pcall(require, "which-key")
-if ok_wk then
-	wk.add({
-		{ "<leader>c", group = "Code/LSP" },
-		{ "<leader>d", group = "Debug" },
-		{ "<leader>e", group = "Explorer" },
-		{ "<leader>f", group = "Find" },
-		{ "<leader>g", group = "Git" },
-		{ "<leader>b", group = "Buffers" },
-		{ "<leader>x", group = "Trouble/Diagnostics" },
-	})
-end

@@ -68,8 +68,12 @@ return {
 					vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-					vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-					vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+					vim.keymap.set("n", "[d", function()
+						vim.diagnostic.jump({ count = -1 })
+					end, opts)
+					vim.keymap.set("n", "]d", function()
+						vim.diagnostic.jump({ count = 1 })
+					end, opts)
 					-- LSP Document highlight: ONLY in normal mode, ONLY for LSP symbols
 					if client and client.server_capabilities.documentHighlightProvider then
 						local group = vim.api.nvim_create_augroup("LSPDocumentHighlight_" .. bufnr, { clear = true })
