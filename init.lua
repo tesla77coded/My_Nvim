@@ -4,6 +4,7 @@ vim.g.maplocalleader = " "
 -- UI
 vim.opt.background = "light"
 vim.opt.number = true
+vim.opt.iskeyword:remove("_")
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.wrap = false
