@@ -8,7 +8,6 @@ vim.opt.iskeyword:remove("_")
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.wrap = false
-vim.opt.termguicolors = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.laststatus = 3
@@ -22,6 +21,7 @@ vim.opt.autoindent = true
 vim.opt.colorcolumn = "100"
 vim.opt.swapfile = false
 vim.opt.autoread = true
+vim.opt.autocomplete = true
 
 -- cursor
 -- vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:block-CursorInsert/lCursorInsert"
@@ -133,7 +133,7 @@ vim.opt.clipboard = "unnamedplus"
 
 -- Built-in colorscheme (no plugin required)
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("custom")
+vim.cmd.colorscheme("custom_dark")
 
 -- Small QoL: highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {

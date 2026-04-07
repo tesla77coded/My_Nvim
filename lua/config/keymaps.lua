@@ -52,7 +52,8 @@ map("n", "<leader>ca", vim.lsp.buf.code_action, opts("Code Action"))
 map("n", "<leader>cf", function()
 	vim.lsp.buf.format({ async = true })
 end, opts("Format"))
-map("n", "<leader>lr", "<cmd>LspRestart<cr>", opts("Restart LSP"))
+
+map("n", "<leader>lr", "<cmd>lsp restart<cr>", opts("Restart LSP"))
 
 -- Diagnostics (now using Trouble)
 map("n", "<leader>cd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", opts("Buffer Diagnostics (Trouble)"))

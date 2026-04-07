@@ -1,49 +1,41 @@
 -- colors/clean-dark.lua
--- Clean, high-clarity dark theme for low-light environments
-
+-- Clean, high-clarity dark theme — dark counterpart to clean-light
 local colors = {
-	-- Backgrounds (cool dark, calm)
-	bg = "#1c1e26", -- deep blue-gray base
-	bg1 = "#232530", -- subtle first tier
-	bg2 = "#2e303e", -- gentle highlight
-	bg3 = "#3e4057", -- borders/subtle UI
-	bg4 = "#4e5166", -- stronger contrast
-
-	-- Foregrounds (warm cream tones)
-	fg = "#d4cfc9", -- soft beige
-	fg1 = "#e8e3dd", -- brighter cream
-	fg2 = "#b8b3ad", -- dimmer gray-beige
-
-	-- Core accents (warmer, more saturated for dark)
-	yellow_muted = "#d4a574", -- peachy gold
-	green_muted = "#7eb895", -- soft sage green
-
+	-- Backgrounds (warm charcoal, stable)
+	bg = "#1c1a18", -- deep warm dark base
+	bg1 = "#242220", -- subtle first tier
+	bg2 = "#2e2b28", -- gentle highlight
+	bg3 = "#3a3632", -- borders/subtle UI
+	bg4 = "#4a4642", -- stronger contrast
+	-- Foregrounds (warm paper-like)
+	fg = "#d8d0c8", -- warm off-white, easy on eyes
+	fg1 = "#e8e0d8", -- brightest text
+	fg2 = "#b8b0a8", -- dimmer text
+	-- Core accents (lifted for dark bg readability)
+	yellow_muted = "#d4aa40", -- warm golden yellow
+	green_muted = "#5ab388", -- lifted forest green
 	-- Supporting colors
-	white = "#ffffff",
-	black = "#0f1117",
-	brown = "#c98a6a", -- terracotta
-	quartz = "#6ba4b8", -- soft teal-blue
-	niagara = "#7fa7d4", -- periwinkle blue
-	wisteria = "#a68fd1", -- soft lavender
-	red = "#d67676", -- muted coral red
-
+	white = "#f0e8e0",
+	black = "#0e0c0a",
+	brown = "#d4845a", -- lifted warm rust/orange
+	quartz = "#5ab0c4", -- lifted teal
+	niagara = "#6090d4", -- lifted confident blue
+	wisteria = "#a890e0", -- lifted violet
+	red = "#e06060", -- lifted red
 	-- UI / semantic
-	comment = "#6b8a7a", -- muted green-gray
-	special_return = "#7fa7d4",
-	cursor_insert = "#e1d9d1",
-	cursor_normal = "#d4845a",
+	comment = "#7aaa8c", -- lifted muted green
+	special_return = "#6090d4",
+	cursor_insert = "#808080",
+	cursor_normal = "#a09890",
 }
-
 -- Derived
 local bg_dark = colors.bg
 local bg_light = colors.bg1
 local fg_dim = colors.comment
-
 -- Helper
 local function hl(group, opts)
 	vim.api.nvim_set_hl(0, group, opts)
 end
-
 -- Reset
 vim.cmd("highlight clear")
 if vim.fn.exists("syntax_on") == 1 then
@@ -51,7 +43,6 @@ if vim.fn.exists("syntax_on") == 1 then
 end
 vim.o.background = "dark"
 vim.g.colors_name = "clean-dark"
-
 -- ========================
 -- Editor
 -- ========================
@@ -64,7 +55,6 @@ hl("lCursor", { fg = colors.bg, bg = colors.yellow_muted })
 hl("CursorLine", { bg = bg_light })
 hl("CursorColumn", { bg = bg_light })
 hl("ColorColumn", { bg = colors.bg3 })
-
 -- ========================
 -- Line numbers & columns
 -- ========================
@@ -73,7 +63,6 @@ hl("CursorLineNr", { fg = colors.yellow_muted, bold = true })
 hl("SignColumn", { fg = colors.bg4, bg = colors.bg })
 hl("FoldColumn", { fg = colors.bg4, bg = colors.bg })
 hl("Folded", { fg = colors.bg4, bg = colors.bg3, italic = true })
-
 -- ========================
 -- Search & selection
 -- ========================
@@ -82,7 +71,6 @@ hl("IncSearch", { fg = colors.black, bg = colors.niagara })
 hl("CurSearch", { fg = colors.black, bg = colors.yellow_muted })
 hl("Visual", { bg = colors.bg4 })
 hl("VisualNOS", { bg = colors.bg4 })
-
 -- ========================
 -- Messages
 -- ========================
@@ -91,16 +79,14 @@ hl("WarningMsg", { fg = colors.brown })
 hl("MoreMsg", { fg = colors.niagara })
 hl("Question", { fg = colors.niagara })
 hl("ModeMsg", { fg = colors.yellow_muted, bold = true })
-
 -- ========================
 -- Statusline & tabs
 -- ========================
-hl("StatusLine", { fg = colors.fg, bg = colors.bg1, bold = true })
-hl("StatusLineNC", { fg = fg_dim, bg = colors.bg2 })
+hl("StatusLine", { bold = false, fg = colors.fg, bg = colors.bg1 })
+hl("StatusLineNC", { bold = false, fg = fg_dim, bg = colors.bg2 })
 hl("TabLine", { fg = fg_dim, bg = colors.bg })
 hl("TabLineSel", { fg = colors.yellow_muted, bg = colors.bg2, bold = true })
 hl("TabLineFill", { bg = "None" })
-
 -- ========================
 -- Popups & menus
 -- ========================
@@ -108,13 +94,11 @@ hl("Pmenu", { fg = colors.fg, bg = colors.bg2 })
 hl("PmenuSel", { fg = colors.black, bg = colors.yellow_muted })
 hl("PmenuSbar", { bg = colors.bg3 })
 hl("PmenuThumb", { bg = colors.quartz })
-
 -- ========================
 -- Splits
 -- ========================
 hl("VertSplit", { fg = colors.bg3 })
 hl("WinSeparator", { fg = colors.bg3 })
-
 -- ========================
 -- Diff
 -- ========================
@@ -122,7 +106,6 @@ hl("DiffAdd", { fg = colors.green_muted, bg = colors.bg2 })
 hl("DiffChange", { fg = colors.brown, bg = colors.bg2 })
 hl("DiffDelete", { fg = colors.red, bg = colors.bg2 })
 hl("DiffText", { fg = colors.yellow_muted, bg = colors.bg3, bold = true })
-
 -- ========================
 -- Syntax
 -- ========================
@@ -145,7 +128,6 @@ hl("Special", { fg = colors.brown })
 hl("SpecialComment", { fg = colors.wisteria })
 hl("Todo", { fg = colors.fg1, bg = colors.bg4, bold = true })
 hl("Error", { fg = colors.red, bold = true })
-
 -- ========================
 -- Treesitter essentials
 -- ========================
@@ -156,7 +138,6 @@ hl("@keyword.return", { fg = colors.special_return, bold = true })
 hl("@string", { fg = colors.green_muted })
 hl("@type", { fg = colors.yellow_muted })
 hl("@constant", { fg = colors.quartz })
-
 -- ========================
 -- Diagnostics
 -- ========================

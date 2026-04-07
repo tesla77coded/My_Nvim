@@ -171,13 +171,16 @@ return {
 							},
 						},
 					},
+					pyright = {
+						disableProgressNotifications = true,
+					},
 				},
 			})
 			-- Ruff (Python linting - ultra-fast)
 			vim.lsp.config("ruff", {})
 			-- Enable all configured servers (REMOVED: eslint)
 			vim.lsp.enable({ "lua_ls", "vtsls", "pyright", "ruff" })
-			vim.opt.updatetime = 200
+			vim.opt.updatetime = 2000
 		end,
 	},
 }
